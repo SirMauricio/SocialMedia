@@ -2,6 +2,11 @@ from flask import Blueprint, render_template, request, redirect
 import pandas as pd
 from db_config import get_engine
 
+import os
+print("RUTA DE TRABAJO ACTUAL:", os.getcwd())
+print("CONTENIDO DE LA CARPETA templates:", os.listdir('templates'))
+
+
 app_routes = Blueprint('app_routes', __name__)
 
 @app_routes.route('/')
@@ -11,7 +16,7 @@ def index():
 @app_routes.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     if request.method == 'POST':
-        # Recoger datos del formulario
+
         datos = {
     'Student_ID': request.form['Student_ID'],
     'Age': request.form['Age'],
@@ -30,7 +35,7 @@ def formulario():
 }
 
 
-        # Insertar en la BD
+
         df = pd.DataFrame([datos])
         engine = get_engine()
         df.to_sql('socialmedia_lectura', con=engine, if_exists='append', index=False)
