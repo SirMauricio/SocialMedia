@@ -6,7 +6,7 @@ def get_engine():
     servidor = 'mysql-terravision.alwaysdata.net'
     nombre_bd = 'terravision_socialmedia'
 
-    # Crea la cadena de conexión
+  #Cadena de conexión
     url = f'mysql+pymysql://{usuario}:{contraseña}@{servidor}:3306/{nombre_bd}'
     engine = create_engine(url)
     return engine

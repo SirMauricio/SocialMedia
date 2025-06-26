@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 app.secret_key = 'clave-secreta'
 
-# Configuración de conexión
+# Configuración de conexión al servidor
 def get_engine():
     usuario = '410495'
     contraseña = 'Jorger0:v'

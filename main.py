@@ -12,7 +12,7 @@ def detectar_tipos(df: pd.DataFrame):
         elif pd.api.types.is_bool_dtype(tipo):
             tipos_sql[columna] = Boolean()
         elif pd.api.types.is_object_dtype(tipo):
-            tipos_sql[columna] = String(500)  # Tamaño genérico
+            tipos_sql[columna] = String(500) 
         else:
             print(f"⚠️ Tipo no reconocido: {columna} -> {tipo}")
     return tipos_sql
@@ -22,28 +22,28 @@ def importar_csv():
     nombre_tabla = 'socialmedia_lectura'
 
     try:
-        # Leer CSV
+
         df = pd.read_csv(ruta_csv, na_values=['', ' ', 'NA', 'N/A'])
 
-        print("🔍 Tipos detectados:")
+        print(" Tipos detectados:")
         print(df.dtypes)
 
-        # Reemplazar nulos por 0 o False (opcional)
+
         df = df.fillna({
             col: 0 if pd.api.types.is_numeric_dtype(dtype) else ''
             for col, dtype in df.dtypes.items()
         })
 
-        # Detectar tipos SQL
+
         tipos_sql = detectar_tipos(df)
 
-        # Insertar a la BD
+
         engine = get_engine()
         df.to_sql(nombre_tabla, con=engine, if_exists='replace', index=False, dtype=tipos_sql)
 
-        print(f"\n✅ Importación completa. Tabla '{nombre_tabla}' creada con tipos definidos dinámicamente.")
+        print(f"\n Importación completa. Tabla '{nombre_tabla}' creada con tipos definidos dinámicamente.")
     except Exception as e:
-        print("\n❌ Error al importar el CSV:", e)
+        print("\n Error al importar el CSV:", e)
 
 if __name__ == "__main__":
     importar_csv()
