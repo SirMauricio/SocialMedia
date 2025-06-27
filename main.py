@@ -43,7 +43,7 @@ def importar_csv():
 
         print(f"\n Importación completa. Tabla '{nombre_tabla}' creada con tipos definidos dinámicamente.")
     except Exception as e:
-        print("\n Error al importar el CSV:", e)
+        print("\n Error al importar el archivo:", e)
 
 if __name__ == "__main__":
     importar_csv()

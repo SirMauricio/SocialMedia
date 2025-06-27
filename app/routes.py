@@ -26,15 +26,13 @@ def formulario():
     'Avg_Daily_Usage_Hours': request.form['Avg_Daily_Usage_Hours'],
     'Most_Used_Platform': request.form['Most_Used_Platform'],
     'Affects_Academic_Performance': request.form['Affects_Academic_Performance'],
-    'Affects_Academic_Performance_Bool': int(request.form['Affects_Academic_Performance_Bool']),
+    'Affects_Academic_Performance(True booleano)': int(request.form['Affects_Academic_Performance(True booleano)']),
     'Sleep_Hours_Per_Night': request.form['Sleep_Hours_Per_Night'],
     'Mental_Health_Score': request.form['Mental_Health_Score'],
     'Relationship_Status': request.form['Relationship_Status'],
     'Conflicts_Over_Social_Media': request.form['Conflicts_Over_Social_Media'],
     'Addicted_Score': request.form['Addicted_Score']
 }
-
-
 
         df = pd.DataFrame([datos])
         engine = get_engine()
