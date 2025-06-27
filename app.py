@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
+import os
 from sqlalchemy import create_engine
+from math import ceil
 
 app = Flask(__name__)
 app.secret_key = 'clave-secreta'
@@ -48,7 +50,37 @@ def formulario():
 
 @app.route('/datos')
 def mostrar_datos():
-    return render_template('datos.html')
+    csv_path = os.path.join('data', 'SocialMediaLectura.csv')
+    page = request.args.get('page', 1, type=int)
+    per_page = 50  # Registros por página
+    
+    try:
+        # Leer todo el DataFrame
+        datos_csv = pd.read_csv(csv_path)
+        total_records = len(datos_csv)
+        total_pages = ceil(total_records / per_page)
+        
+        page = max(1, min(page, total_pages))
+
+        # Paginar los datos
+        start = (page - 1) * per_page
+        end = start + per_page
+        datos_paginados = datos_csv.iloc[start:end]
+        
+        tabla_html = datos_paginados.to_html(classes='table table-striped', index=False)
+        
+        return render_template('datos.html', 
+                            tabla_html=tabla_html,
+                            current_page=page,
+                            total_pages=total_pages,
+                            total_records=total_records,
+                            per_page=per_page)
+    
+        
+    except Exception as e:
+        return render_template('datos.html', error=str(e))
+            
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
