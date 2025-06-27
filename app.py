@@ -18,6 +18,7 @@ def get_engine():
 def index():
     return render_template('index.html')
 
+
 @app.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     if request.method == 'POST':
@@ -44,6 +45,10 @@ def formulario():
 
         return redirect('/')
     return render_template('formulario.html')
+
+@app.route('/datos')
+def mostrar_datos():
+    return render_template('datos.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
