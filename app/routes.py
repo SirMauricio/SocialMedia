@@ -13,6 +13,12 @@ app_routes = Blueprint('app_routes', __name__)
 def index():
     return render_template('index.html')
 
+
+@app_routes.route('/datos')
+def datos():
+    return render_template('datos.html')
+
+
 @app_routes.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     if request.method == 'POST':
@@ -41,3 +47,4 @@ def formulario():
         return redirect('/')
 
     return render_template('formulario.html')
+
