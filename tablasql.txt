@@ -1,0 +1,16 @@
+CREATE TABLE socialmedia_lectura (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Age INT,
+    Gender VARCHAR(20),
+    Academic_Level VARCHAR(100),
+    Country VARCHAR(100),
+    Avg_Daily_Usage_Hours FLOAT,
+    Most_Used_Platform VARCHAR(50),
+    Sleep_Hours_Per_Night FLOAT,
+    Relationship_Status VARCHAR(50),
+    Conflicts_Over_Social_Media INT,
+    Affects_Academic_Performance VARCHAR(100),
+    Affects_Academic_Performance_Bool BOOLEAN,
+    Addicted_Score FLOAT,
+    Mental_Health_Score FLOAT
+);
