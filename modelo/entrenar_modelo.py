@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.multioutput import MultiOutputRegressor
 import joblib
 from sqlalchemy import create_engine
+import os
 
 # Conexión a la base de datos
 usuario = '410495'
@@ -17,12 +18,12 @@ engine = create_engine(url)
 df = pd.read_sql("SELECT * FROM socialmedia_lectura", con=engine)
 
 # Variables objetivo
-target_cols = ['Affects_Academic_Performance_Bool', 'Addicted_Score', 'Mental_Health_Score']
+target_cols = ['Affects_Academic_Performance(True booleano)', 'Addicted_Score', 'Mental_Health_Score']
 
 # Asegurar que no hay nulos
 df = df.dropna(subset=target_cols)
 
-# Columnas de entrada (todo lo demás menos las columnas objetivo y la columna duplicada)
+# Columnas de entrada
 input_cols = df.columns.difference(target_cols + ['Affects_Academic_Performance'])
 
 # Crear conjuntos de entrada y salida
@@ -37,8 +38,16 @@ base_model = RandomForestRegressor(random_state=42)
 model = MultiOutputRegressor(base_model)
 model.fit(X_train, y_train)
 
-# Guardar el modelo y las columnas de entrada
-joblib.dump(model, 'modelo_multioutput.pkl')
-joblib.dump(X.columns.tolist(), 'input_columns.pkl')
+# Ruta de carpeta actual (modelo/)
+ruta_guardado = os.path.dirname(os.path.abspath(__file__))
+print("Guardando archivos en:", ruta_guardado)
 
-print("Modelo entrenado y guardado correctamente.")
+modelo_path = os.path.join(ruta_guardado, 'modelo_multioutput.pkl')
+cols_path = os.path.join(ruta_guardado, 'input_columns.pkl')
+
+try:
+    joblib.dump(model, modelo_path)
+    joblib.dump(X.columns.tolist(), cols_path)
+    print("Archivos guardados correctamente en /modelo")
+except Exception as e:
+    print("Error guardando archivos:", e)

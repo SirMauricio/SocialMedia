@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Resultado del Registro{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Datos Registrados</h2>
+
+<div class="card shadow p-4 border-0">
+  <h5 class="mb-3">Información proporcionada:</h5>
+  <ul class="list-group mb-3">
+    <li class="list-group-item"><strong>Edad:</strong> {{ datos.Age }}</li>
+    <li class="list-group-item"><strong>Género:</strong> {{ datos.Gender }}</li>
+    <li class="list-group-item"><strong>Nivel Académico:</strong> {{ datos.Academic_Level }}</li>
+    <li class="list-group-item"><strong>País:</strong> {{ datos.Country }}</li>
+    <li class="list-group-item"><strong>Horas promedio de uso:</strong> {{ datos.Avg_Daily_Usage_Hours }}</li>
+    <li class="list-group-item"><strong>Plataforma más usada:</strong> {{ datos.Most_Used_Platform }}</li>
+    <li class="list-group-item"><strong>Horas de sueño:</strong> {{ datos.Sleep_Hours_Per_Night }}</li>
+    <li class="list-group-item"><strong>Estado civil:</strong> {{ datos.Relationship_Status }}</li>
+    <li class="list-group-item"><strong>Conflictos en redes sociales:</strong> {{ datos.Conflicts_Over_Social_Media }}</li>
+  </ul>
+
+  <h5 class="mb-3">Predicción de la IA:</h5>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>¿Afecta el rendimiento académico?</strong> {{ datos.Affects_Academic_Performance }} 
+<span class="badge bg-{{ 'danger' if datos.Affects_Academic_Performance == 'Yes' else 'success' }}">
+  {{ 'Sí' if datos.Affects_Academic_Performance == 'Yes' else 'No' }}
+</span>
+
+    </li>
+    <li class="list-group-item"><strong>Puntaje de adicción:</strong> {{ datos.Addicted_Score }}</li>
+    <li class="list-group-item"><strong>Puntaje de salud mental:</strong> {{ datos.Mental_Health_Score }}</li>
+    
+  </ul>
+
+  <div class="mt-4 text-end">
+    <a href="/" class="btn btn-outline-primary">Volver al inicio</a>
+    <a href="/descargar_pdf?path={{ pdf_path }}" class="btn btn-primary" target="_blank">Descargar PDF</a>
+  </div>
+</div>
+{% endblock %}

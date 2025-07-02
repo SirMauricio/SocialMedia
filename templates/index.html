@@ -1,7 +1,20 @@
 {% extends "base.html" %}
+
+{% block title %}Inicio - Flask + IA{% endblock %}
+
 {% block content %}
-<h1>Bienvenido a SocialMedia</h1>
-<p>Haz clic en el formulario para registrar datos de uso de redes sociales.</p>
-<a class="btn btn-primary" href="/formulario">Ir al formulario</a>
-<a class="btn btn-primary" href="/datos">Ir a la página de datos</a>
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <div class="card shadow p-4 border-0 rounded-3 bg-white">
+      <h1 class="text-center mb-4">Bienvenido al inicio del registro</h1>
+      <p class="lead text-center">
+        Esta aplicación permite registrar datos sobre el uso de redes sociales y predecir cómo afecta al rendimiento académico, salud mental y adicción digital.
+      </p>
+      <div class="text-center mt-4">
+        <a href="/formulario" class="btn btn-primary me-3">Ir al Formulario</a>
+        <a href="/datos" class="btn btn-outline-secondary">Ver Estadísticas</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
