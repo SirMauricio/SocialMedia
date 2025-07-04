@@ -17,9 +17,9 @@ def detectar_tipos(df: pd.DataFrame):
             print(f"⚠️ Tipo no reconocido: {columna} -> {tipo}")
     return tipos_sql
 
-def importar_csv():
-    ruta_csv = 'data/SocialMediaLectura.csv'
-    nombre_tabla = 'socialmedia_lectura'
+def importar_csv(nombre_archivo='SocialMediaLectura.csv'):
+    ruta_csv = f'data/{nombre_archivo}'  # Ahora es dinámico
+    nombre_tabla = nombre_archivo.split('.')[0]  # Ej: "datos.csv" -> tabla "datos"
 
     try:
 

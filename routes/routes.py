@@ -18,6 +18,10 @@ def index():
 def datos():
     return render_template('datos.html')
 
+@app_routes.route('/upload')
+def upload():
+    return render_template('upload.html')
+
 
 @app_routes.route('/formulario', methods=['GET', 'POST'])
 def formulario():
