@@ -20,13 +20,13 @@
 
   <h5 class="mb-3">Predicción de la IA:</h5>
   <ul class="list-group">
-    <li class="list-group-item">
-      <strong>¿Afecta el rendimiento académico?</strong> {{ datos.Affects_Academic_Performance }} 
-<span class="badge bg-{{ 'danger' if datos.Affects_Academic_Performance == 'Yes' else 'success' }}">
-  {{ 'Sí' if datos.Affects_Academic_Performance == 'Yes' else 'No' }}
-</span>
+<li class="list-group-item">
+  <strong>¿Afecta el rendimiento académico?</strong>
+  <span class="badge bg-{{ 'danger' if datos.Affects_Academic_Performance == 'Sí' else 'success' }}">
+    {{ datos.Affects_Academic_Performance }}
+  </span>
+</li>
 
-    </li>
     <li class="list-group-item"><strong>Puntaje de adicción:</strong> {{ datos.Addicted_Score }}</li>
     <li class="list-group-item"><strong>Puntaje de salud mental:</strong> {{ datos.Mental_Health_Score }}</li>
     
