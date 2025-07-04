@@ -7,3 +7,6 @@ seaborn
 joblib
 weasyprint
 xhtml2pdf
+openpyxl
+flask
+werkzeug
