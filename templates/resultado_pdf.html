@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados del Formulario</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 40px;
+            background: #f5f6fa;
+            color: #2c3e50;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+      table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #dce9f9;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+
+        td:first-letter {
+            text-transform: uppercase;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .campo {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Reporte de Evaluación del Usuario</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campo, valor in datos.items() %}
+                <tr>
+                    <td class="campo">{{ campo.replace('_', ' ') }}</td>
+                    <td>{{ valor }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer">
+            Este reporte fue generado automáticamente por <strong>SocialMedia Insights</strong>.<br>
+            Gracias por participar en el análisis de hábitos digitales.
+        </div>
+    </div>
+
+</body>
+</html>

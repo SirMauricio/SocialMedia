@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Subir Archivo</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Selecciona un archivo (CSV o XLSX):</label>
+            <input type="file" class="form-control-file" id="file" name="file" accept=".csv,.xlsx" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Subir</button>
+    </form>
+</div>
+{% endblock %}

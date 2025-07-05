@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Resultado del Registro{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(to right, #f9f9f9, #e0eafc);
+  }
+
+  .result-card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .list-group-item {
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .badge-custom {
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em;
+    border-radius: 1rem;
+  }
+
+  .section-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #343a40;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    border-radius: 2rem;
+    padding: 0.6rem 1.4rem;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+</style>
+
+<h2 class="mb-4 text-center fw-bold text-dark"> Resultado del Registro</h2>
+
+<div class="card result-card mx-auto" style="max-width: 800px;">
+  <div class="mb-4">
+    <h5 class="section-title"> Información Proporcionada:</h5>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Edad:</strong> {{ datos.Age }}</li>
+      <li class="list-group-item"><strong>Género:</strong> {{ datos.Gender }}</li>
+      <li class="list-group-item"><strong>Nivel Académico:</strong> {{ datos.Academic_Level }}</li>
+      <li class="list-group-item"><strong>País:</strong> {{ datos.Country }}</li>
+      <li class="list-group-item"><strong>Horas promedio de uso:</strong> {{ datos.Avg_Daily_Usage_Hours }}</li>
+      <li class="list-group-item"><strong>Plataforma más usada:</strong> {{ datos.Most_Used_Platform }}</li>
+      <li class="list-group-item"><strong>Horas de sueño:</strong> {{ datos.Sleep_Hours_Per_Night }}</li>
+      <li class="list-group-item"><strong>Estado civil:</strong> {{ datos.Relationship_Status }}</li>
+      <li class="list-group-item"><strong>Conflictos en redes sociales:</strong> {{ datos.Conflicts_Over_Social_Media }}</li>
+    </ul>
+  </div>
+
+  <div>
+    <h5 class="section-title"> Predicción de la IA:</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span><strong>¿Afecta el rendimiento académico?</strong> {{ datos.Affects_Academic_Performance }}</span>
+        <span class="badge badge-custom bg-{{ 'danger' if datos.Affects_Academic_Performance == 'Yes' else 'success' }}">
+          {{ 'Sí' if datos.Affects_Academic_Performance == 'Yes' else 'No' }}
+        </span>
+      </li>
+      <li class="list-group-item"><strong>Puntaje de adicción:</strong> {{ datos.Addicted_Score }}/100</li>
+      <li class="list-group-item"><strong>Puntaje de salud mental:</strong> {{ datos.Mental_Health_Score }}/100</li>
+    </ul>
+  </div>
+
+  <div class="mt-4 text-end">
+    <a href="/" class="btn btn-outline-primary me-2">Volver al inicio</a>
+    <a href="/descargar_pdf?path={{ pdf_path }}" class="btn btn-primary" target="_blank">Descargar PDF</a>
+  </div>
+</div>
+{% endblock %}

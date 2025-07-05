@@ -1,6 +1,131 @@
 {% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
 {% block content %}
-<h1>Bienvenido a SocialMedia</h1>
-<p>Haz clic en el formulario para registrar datos de uso de redes sociales.</p>
-<a class="btn btn-primary" href="/formulario">Ir al formulario</a>
+<style>
+  .hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+  }
+
+  .info-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .info-section img {
+    max-width: 100%;
+    border-radius: 1rem;
+  }
+
+  .card-data {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+
+  .card-data:hover {
+    transform: translateY(-5px);
+  }
+
+  .highlight-section {
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .testimonial {
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="display-4 fw-bold">SocialMedia Insights</h1>
+  <p class="lead mt-3">Descubre cómo las redes sociales están influyendo en tu vida y la de miles de personas.</p>
+</div>
+
+<!-- ¿QUÉ ES ESTO? -->
+<div class="info-section row g-4 align-items-center mb-5">
+  <div class="col-md-6">
+    <h2 class="section-title">¿Qué es SocialMedia Insights?</h2>
+    <p>
+      Es una herramienta interactiva que recopila datos reales sobre el uso de plataformas como TikTok, Instagram, Facebook y otras.
+      Analizamos tu tiempo de uso, hábitos de sueño, relaciones sociales y más, para entender cómo afectan tu vida diaria.
+    </p>
+    <p>
+      Tu participación es anónima, segura y útil para crear conciencia sobre el impacto digital.
+    </p>
+  </div>
+  <div class="col-md-6">
+    <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7" alt="Redes sociales" class="img-fluid">
+  </div>
+</div>
+
+<!-- DATOS QUE RECOLECTAMOS -->
+<h2 class="section-title text-center">¿Qué datos analizamos?</h2>
+<div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+  <div class="col">
+    <div class="card card-data text-center p-3">
+      <h5 class="fw-bold">Uso Diario</h5>
+      <p>¿Cuántas horas al día pasas en redes sociales?</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card card-data text-center p-3">
+      <h5 class="fw-bold"> Conflictos</h5>
+      <p>¿Has tenido discusiones relacionadas con redes sociales?</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card card-data text-center p-3">
+      <h5 class="fw-bold"> Sueño</h5>
+      <p>¿Afecta tu descanso el uso de redes?</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card card-data text-center p-3">
+      <h5 class="fw-bold">Plataforma</h5>
+      <p>¿Cuál red social usas más?</p>
+    </div>
+  </div>
+</div>
+
+<!-- DESTACADO / MINI GRÁFICO -->
+<div class="highlight-section">
+  <h2 class="section-title">Ejemplo de hallazgos</h2>
+  <p>
+    El 42% de los usuarios que pasan más de 5 horas en redes sociales reportan dormir menos de 6 horas por noche.
+  </p>
+  <img src="https://www.chartjs.org/media/chartjs-logo.svg" alt="Gráfico ilustrativo" width="150">
+  <p class="mt-3 text-muted">*Este gráfico es una ilustración, los resultados reales aparecerán en la sección de estadísticas.</p>
+</div>
+
+<!-- TESTIMONIO -->
+<div class="testimonial">
+  “Entender cómo usamos la tecnología nos ayuda a tomar mejores decisiones. SocialMedia Insights te da esa claridad.”
+</div>
+
 {% endblock %}

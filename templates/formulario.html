@@ -1,103 +1,139 @@
 {% extends "base.html" %}
+{% block title %}Formulario{% endblock %}
+
 {% block content %}
 <style>
   body {
-    background: linear-gradient(to right, #e0f7fa, #e3f2fd);
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
   }
-  .card {
+
+  .form-card {
+    background-color: #ffffff;
     border-radius: 1rem;
-    background: #ffffffcc;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
   }
-  .section-title {
-    font-weight: 600;
-    color: #0288d1;
-    margin-bottom: 1rem;
-  }
+
   .form-label {
-    font-weight: 500;
+    font-weight: 600;
   }
+
+  select.form-select,
+  input.form-control {
+    border-radius: 2rem;
+    padding: 0.6rem 1rem;
+  }
+
   .btn-success {
-    background-color: #43a047;
-    border: none;
+    border-radius: 2rem;
+    padding: 0.6rem 2rem;
+    font-size: 1.1rem;
   }
-  .btn-success:hover {
-    background-color: #388e3c;
+
+  h2 {
+    font-weight: 700;
+    color: #343a40;
   }
 </style>
 
 <div class="container py-5">
-  <div class="card shadow-lg p-4">
-    <h2 class="mb-4 text-center text-primary">🧠 Encuesta sobre Uso de Redes Sociales 📱</h2>
-    <p class="text-center text-muted mb-5">Tu participación es anónima y muy valiosa. Responde con sinceridad. 💬</p>
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="form-card">
+        <h2 class="text-center mb-4">Encuesta de Redes Sociales</h2>
+        <form method="post">
+          <div class="row g-4">
 
-    <form method="post">
-      <div class="row">
-        <!-- Datos personales -->
-        <div class="col-12 mb-3">
-          <h5 class="section-title">👤 Datos personales</h5>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Edad</label>
+              <input type="number" name="Age" class="form-control" min="1" required>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Edad</label>
-          <input type="number" name="Age" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Género</label>
+              <select name="Gender" class="form-select" required>
+                <option value="">Seleccionar</option>
+                <option value="Male">Masculino</option>
+                <option value="Female">Femenino</option>
+                <option value="Other">Otro</option>
+              </select>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Género</label>
-          <input type="text" name="Gender" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Nivel Académico</label>
+              <select name="Academic_Level" class="form-select" required>
+                <option disabled selected>Selecciona nivel académico</option>
+                {% for nivel in niveles %}
+                  <option value="{{ nivel }}">{{ nivel }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Nivel Académico</label>
-          <input type="text" name="Academic_Level" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">País</label>
+              <select name="Country" class="form-select" required>
+                <option disabled selected>Selecciona un país</option>
+                {% for pais in paises %}
+                  <option value="{{ pais }}">{{ pais }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">País</label>
-          <input type="text" name="Country" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Horas promedio de uso diario</label>
+              <input type="number" step="0.1" name="Avg_Daily_Usage_Hours" min="0" class="form-control" required>
+            </div>
 
-        <!-- Uso de redes -->
-        <div class="col-12 mt-4 mb-3">
-          <h5 class="section-title">🌐 Uso de redes sociales</h5>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Plataforma más usada</label>
+              <select name="Most_Used_Platform" class="form-select" required>
+                <option disabled selected>Seleccione la plataforma que más usa</option>
+                {% for plataforma in plataformas %}
+                  <option value="{{ plataforma }}">{{ plataforma }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Horas promedio diarias</label>
-          <input type="number" step="0.1" name="Avg_Daily_Usage_Hours" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Horas de sueño por noche</label>
+              <input type="number" step="0.1" name="Sleep_Hours_Per_Night" min="0" class="form-control" required>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Plataforma más usada</label>
-          <input type="text" name="Most_Used_Platform" class="form-control" required>
-        </div>
+            <div class="col-md-6">
+              <label class="form-label">Estado civil</label>
+              <select name="Relationship_Status" class="form-select" required>
+                <option disabled selected>Seleccione su estado civil</option>
+                {% for estado in estados %}
+                  <option value="{{ estado }}">{{ estado }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Conflictos por redes sociales</label>
-          <input type="number" name="Conflicts_Over_Social_Media" class="form-control" required>
-        </div>
+            <div class="col-12">
+              <label for="Conflicts_Over_Social_Media" class="form-label">Conflictos en redes sociales</label>
+              <select id="Conflicts_Over_Social_Media" name="Conflicts_Over_Social_Media" class="form-select" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                {% for i in range(6) %}
+                  <option value="{{ i }}">{{ i }} -
+                    {% if i == 0 %}Nunca
+                    {% elif i == 1 %}Muy raramente
+                    {% elif i == 2 %}Raramente
+                    {% elif i == 3 %}A veces
+                    {% elif i == 4 %}Frecuentemente
+                    {% elif i == 5 %}Siempre
+                    {% endif %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
 
-        <!-- Estilo de vida -->
-        <div class="col-12 mt-4 mb-3">
-          <h5 class="section-title">💤 Estilo de vida</h5>
-        </div>
-
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Horas de sueño por noche</label>
-          <input type="number" step="0.1" name="Sleep_Hours_Per_Night" class="form-control" required>
-        </div>
-
-        <div class="col-md-6 mb-4">
-          <label class="form-label">Estado civil</label>
-          <input type="text" name="Relationship_Status" class="form-control" required>
-        </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success">Guardar formulario</button>
+          </div>
+        </form>
       </div>
-
-      <div class="text-center mt-4">
-        <button type="submit" class="btn btn-success btn-lg px-5 shadow">💾 Guardar</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 {% endblock %}

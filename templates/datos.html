@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Visualización de Datos</h2>
+    
+    <!-- Mostrar error si existe -->
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    
+    <!-- Tabla de datos -->
+    <div class="table-responsive mb-4">
+        {{ tabla_html|safe }}
+    </div>
+    
+    <!-- Paginación - Solo mostrar si tenemos datos -->
+    {% if total_records > 0 %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <!-- Flecha anterior -->
+            {% if current_page > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ current_page - 1 }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+            </li>
+            {% endif %}
+            
+            <!-- Números de página -->
+            {% for p in range(1, total_pages + 1) %}
+            <li class="page-item {% if p == current_page %}active{% endif %}">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+            
+            <!-- Flecha siguiente -->
+            {% if current_page < total_pages %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ current_page + 1 }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <div class="text-center text-muted">
+        Mostrando registros del {{ (current_page - 1) * per_page + 1 }} al 
+        {{ [current_page * per_page, total_records]|min }} de {{ total_records }} totales
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
