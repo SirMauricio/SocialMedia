@@ -2,99 +2,117 @@
 {% block title %}Formulario de Evaluación{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-  <h2 class="mb-4">Formulario de Evaluación del Uso de Redes Sociales</h2>
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <div class="card shadow-lg p-5 border-0 rounded-4 bg-light">
+      <h2 class="text-center mb-4 text-primary">
+        <i class="bi bi-ui-checks-grid"></i> Evaluación del Uso de Redes Sociales
+      </h2>
 
-  {% if errores %}
-    <div class="alert alert-danger">
-      <ul>
-        {% for error in errores %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+      {% if errores %}
+        <div class="alert alert-danger">
+          <ul class="mb-0">
+            {% for error in errores %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
 
-  <form method="POST" action="/formulario" novalidate>
-    <div class="mb-3">
-      <label for="Age" class="form-label">Edad</label>
-      <input type="number" class="form-control" name="Age" min="14" max="100" required>
-      <div class="invalid-feedback">Ingrese una edad válida (14-100 años).</div>
-    </div>
+      <form method="POST" action="/formulario" novalidate>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="Age" class="form-label">Edad</label>
+            <input type="number" class="form-control" name="Age" min="14" max="100" required>
+            <div class="invalid-feedback">Ingrese una edad válida (14–100 años).</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Gender" class="form-label">Género</label>
-      <select class="form-select" name="Gender" required>
-        <option value="">Seleccione</option>
-        <option value="Male">Masculino</option>
-        <option value="Female">Femenino</option>
-        <option value="Other">Otro</option>
-      </select>
-      <div class="invalid-feedback">Seleccione una opción.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Gender" class="form-label">Género</label>
+            <select class="form-select" name="Gender" required>
+              <option value="">Seleccione</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una opción.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Academic_Level" class="form-label">Nivel Académico</label>
-      <select class="form-select" name="Academic_Level" required>
-        {% for nivel in niveles %}
-          <option value="{{ nivel }}">{{ nivel }}</option>
-        {% endfor %}
-      </select>
-      <div class="invalid-feedback">Seleccione el nivel académico.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Academic_Level" class="form-label">Nivel Académico</label>
+            <select class="form-select" name="Academic_Level" required>
+              {% for nivel in niveles %}
+                <option value="{{ nivel }}">{{ nivel }}</option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">Seleccione el nivel académico.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Country" class="form-label">País</label>
-      <select class="form-select" name="Country" required>
-        {% for pais in paises %}
-          <option value="{{ pais }}">{{ pais }}</option>
-        {% endfor %}
-      </select>
-      <div class="invalid-feedback">Seleccione un país.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Country" class="form-label">País</label>
+            <select class="form-select" name="Country" required>
+              {% for pais in paises %}
+                <option value="{{ pais }}">{{ pais }}</option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">Seleccione un país.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Avg_Daily_Usage_Hours" class="form-label">Horas promedio de uso diario</label>
-      <input type="number" class="form-control" name="Avg_Daily_Usage_Hours" min="0" max="24" step="0.1" required>
-      <div class="invalid-feedback">Ingrese un valor entre 0 y 24.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Avg_Daily_Usage_Hours" class="form-label">Horas promedio de uso diario</label>
+            <input type="number" class="form-control" name="Avg_Daily_Usage_Hours" min="0" max="24" step="0.1" required>
+            <div class="invalid-feedback">Ingrese un valor entre 0 y 24.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Most_Used_Platform" class="form-label">Plataforma más usada</label>
-      <select class="form-select" name="Most_Used_Platform" required>
-        {% for plataforma in plataformas %}
-          <option value="{{ plataforma }}">{{ plataforma }}</option>
-        {% endfor %}
-      </select>
-      <div class="invalid-feedback">Seleccione una plataforma.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Sleep_Hours_Per_Night" class="form-label">Horas de sueño por noche</label>
+            <input type="number" class="form-control" name="Sleep_Hours_Per_Night" min="0" max="24" step="0.1" required>
+            <div class="invalid-feedback">Ingrese un valor entre 0 y 24.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Sleep_Hours_Per_Night" class="form-label">Horas de sueño por noche</label>
-      <input type="number" class="form-control" name="Sleep_Hours_Per_Night" min="0" max="24" step="0.1" required>
-      <div class="invalid-feedback">Ingrese un valor entre 0 y 24.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Most_Used_Platform" class="form-label">Plataforma más usada</label>
+            <select class="form-select" name="Most_Used_Platform" required>
+              {% for plataforma in plataformas %}
+                <option value="{{ plataforma }}">{{ plataforma }}</option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">Seleccione una plataforma.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Relationship_Status" class="form-label">Estado Civil</label>
-      <select class="form-select" name="Relationship_Status" required>
-        {% for estado in estados %}
-          <option value="{{ estado }}">{{ estado }}</option>
-        {% endfor %}
-      </select>
-      <div class="invalid-feedback">Seleccione su estado civil.</div>
-    </div>
+          <div class="col-md-6">
+            <label for="Relationship_Status" class="form-label">Estado Civil</label>
+            <select class="form-select" name="Relationship_Status" required>
+              {% for estado in estados %}
+                <option value="{{ estado }}">{{ estado }}</option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">Seleccione su estado civil.</div>
+          </div>
 
-    <div class="mb-3">
-      <label for="Conflicts_Over_Social_Media" class="form-label">Conflictos en redes sociales (0: Nunca, 5: Siempre)</label>
-      <input type="number" class="form-control" name="Conflicts_Over_Social_Media" min="0" max="5" step="1" required>
-      <div class="invalid-feedback">Ingrese un número entre 0 y 5.</div>
-    </div>
+          <div class="col-12">
+            <label for="Conflicts_Over_Social_Media" class="form-label">Conflictos en redes sociales</label>
+            <select class="form-select" name="Conflicts_Over_Social_Media" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option value="0">0 - Nunca</option>
+              <option value="1">1 - Rara vez</option>
+              <option value="2">2 - A veces</option>
+              <option value="3">3 - Frecuente</option>
+              <option value="4">4 - Muy frecuente</option>
+              <option value="5">5 - Siempre</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una opción entre 0 y 5.</div>
+          </div>
+        </div>
 
-    <div class="text-end">
-      <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="text-end mt-4">
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="bi bi-send"></i> Enviar Evaluación
+          </button>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
 
 <script>

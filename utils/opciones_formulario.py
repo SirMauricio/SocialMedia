@@ -1,20 +1,14 @@
 
 paises = [
-    "Afganistán", "Alemania", "Arabia Saudita", "Argentina", "Australia", "Austria", "Bolivia",
-    "Brasil", "Bélgica", "Canadá", "Chile", "China", "Colombia", "Corea del Sur", "Costa Rica",
-    "Cuba", "Dinamarca", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "España",
-    "Estados Unidos", "Estonia", "Filipinas", "Finlandia", "Francia", "Grecia", "Guatemala",
-    "Honduras", "Hungría", "India", "Indonesia", "Irlanda", "Israel", "Italia", "Japón",
-    "Kazajistán", "Letonia", "Lituania", "Malasia", "Marruecos", "México", "Nicaragua",
-    "Noruega", "Nueva Zelanda", "Países Bajos", "Panamá", "Paraguay", "Perú", "Polonia",
-    "Portugal", "Puerto Rico", "Reino Unido", "República Checa", "República Dominicana",
-    "Rumanía", "Rusia", "Sudáfrica", "Suecia", "Suiza", "Tailandia", "Turquía", "Ucrania",
-    "Uruguay", "Venezuela", "Vietnam", "Otro"
+    "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Costa Rica", "Cuba", "Ecuador",
+    "El Salvador", "Guatemala", "Honduras", "México", "Nicaragua", "Panamá", "Paraguay",
+    "Perú", "Puerto Rico", "República Dominicana", "Uruguay", "Venezuela", "Otro"
 ]
+
 niveles_academicos = [
-    "Primaria", "Secundaria", "Preparatoria / Bachillerato",
-    "Técnico / Tecnológico", "Licenciatura / Grado",
-    "Maestría / Posgrado", "Doctorado", "Otro"
+    "Preparatoria",
+    "Universidad", "Posgrado",
+    "Otro", "Sin estudios"
 ]
 
 plataformas_sociales = [
@@ -24,6 +18,6 @@ plataformas_sociales = [
 ]
 
 estados_civiles = [
-    "Soltero/a", "En una relación", "Casado/a", "Comprometido/a",
-    "Separado/a", "Divorciado/a", "Viudo/a", "Prefiero no decirlo"
+    "Soltero/a", "En una relación", "Es complicado",
+    "Otro tipo de relación"
 ]

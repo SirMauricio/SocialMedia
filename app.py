@@ -39,7 +39,7 @@ mail = Mail(app)
 app.register_blueprint(datos_bp)
 app.register_blueprint(formulario_bp)
 app.register_blueprint(predicciones_bp)
-app.register_blueprint(app_routes)  # Registra el Blueprint con /upload
+app.register_blueprint(app_routes)  
 
 # ─────────────────────────────────────────────────────────────
 # Ruta principal
@@ -53,7 +53,7 @@ def index():
 # ─────────────────────────────────────────────────────────────
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # ─────────────────────────────────────────────────────────────
 # Arranque de la aplicación

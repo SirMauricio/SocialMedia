@@ -15,7 +15,7 @@ url = f'mysql+pymysql://{usuario}:{contraseña}@{servidor}:3306/{nombre_bd}'
 engine = create_engine(url)
 
 # Leer datos
-df = pd.read_sql("SELECT * FROM socialmedia_lectura", con=engine)
+df = pd.read_sql("SELECT * FROM SocialMediaLectura", con=engine)
 
 # Variables objetivo
 target_cols = ['Affects_Academic_Performance(True booleano)', 'Addicted_Score', 'Mental_Health_Score']

@@ -129,10 +129,16 @@
     {% endif %}
 </div>
 
-<div class="section-title">Visualización de Resultados</div>
-<div style="text-align:center;">
-    <img src="data:image/png;base64,{{ grafico_base64 }}" alt="Gráfico radar de resultados" style="width:80%; max-width:400px; margin-top:10px;">
-</div>
+    <div class="section-title">Visualización de Resultados</div>
+    <div style="text-align:center; margin-bottom: 20px;">
+        <h3>Gráfico Radar</h3>
+        <img src="data:image/png;base64,{{ grafico_radar }}" alt="Gráfico radar" style="max-width: 400px;">
+    </div>
+
+    <div style="text-align:center;">
+        <h3>Gráfico de Barras</h3>
+        <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico barras" style="max-width: 500px;">
+    </div>
 
 
     <div class="footer">

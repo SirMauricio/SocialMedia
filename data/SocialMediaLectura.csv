@@ -1,101 +1,101 @@
 Student_ID,Age,Gender,Academic_Level,Country,Avg_Daily_Usage_Hours,Most_Used_Platform,Affects_Academic_Performance,Affects_Academic_Performance(True booleano),Sleep_Hours_Per_Night,Mental_Health_Score,Relationship_Status,Conflicts_Over_Social_Media,Addicted_Score
-1,20,Female,Graduate,Mexico,6.5,Snapchat,Yes,1,5.2,3,Complicated,0,9
-2,20,Male,Undergraduate,Mexico,1.3,YouTube,Yes,1,4.9,4,Single,0,3
-3,17,Male,Undergraduate,Mexico,2.8,Facebook,Yes,1,5.0,6,In Relationship,0,4
+1,20,Female,Graduate,Mexico,6.5,Snapchat,Yes,1,5.2,3,Complicated,1,9
+2,20,Male,Undergraduate,Mexico,1.3,YouTube,No,0,4.9,4,Single,0,3
+3,17,Male,Undergraduate,Mexico,2.8,Facebook,Yes,1,5,6,In Relationship,0,4
 4,23,Female,Undergraduate,Mexico,4.1,Facebook,No,0,6.6,7,Single,2,6
 5,20,Male,Undergraduate,Mexico,3.8,Facebook,No,0,8.8,6,In Relationship,1,3
 6,24,Female,Graduate,Mexico,6.6,YouTube,Yes,1,7.4,6,In Relationship,1,8
 7,21,Female,Undergraduate,Mexico,7.6,Facebook,Yes,1,4.4,4,In Relationship,5,10
 8,25,Male,Undergraduate,Mexico,5.3,Snapchat,Yes,1,4.5,4,Complicated,2,7
-9,21,Male,Undergraduate,Mexico,3.8,YouTube,Yes,1,5.1,6,Single,3,5
+9,21,Male,Undergraduate,Mexico,3.8,YouTube,No,0,7.1,6,Single,3,5
 10,19,Female,Graduate,Mexico,2.4,Twitter,No,0,8.3,8,In Relationship,0,4
-11,18,Male,High School,Mexico,3.2,TikTok,No,0,8.7,7,Single,2,3
-12,23,Male,Graduate,Mexico,3.3,Twitter,Yes,1,7.4,6,Single,4,9
-13,21,Male,High School,Mexico,1.5,Twitter,No,0,6.8,6,Single,2,3
+11,18,Male,Graduate,Mexico,3.2,TikTok,No,0,8.7,7,Single,2,3
+12,23,Male,Graduate,Mexico,3.3,Twitter,No,0,7.4,6,Single,4,5
+13,21,Male,Graduate,Mexico,1.5,Twitter,No,0,6.8,6,Single,2,3
 14,18,Female,Undergraduate,Mexico,4.1,Snapchat,Yes,1,7.2,2,In Relationship,5,9
-15,18,Male,Undergraduate,Mexico,5.5,YouTube,Yes,1,5.6,4,Single,2,6
-16,20,Female,High School,Mexico,6.6,Instagram,Yes,1,5.7,4,Single,1,8
-17,21,Male,Undergraduate,Mexico,5.6,Twitter,Yes,1,7.7,4,Single,4,8
-18,25,Male,Graduate,Mexico,4.8,Snapchat,No,0,8.5,10,In Relationship,0,6
-19,20,Female,High School,Mexico,6.2,Instagram,Yes,1,7.0,3,Single,4,8
-20,24,Male,High School,Mexico,4.0,Instagram,Yes,1,4.8,3,In Relationship,1,5
+15,18,Male,Undergraduate,Mexico,5.5,YouTube,Yes,1,5.6,4,Single,2,8
+16,20,Female,Graduate,Mexico,6.6,Instagram,Yes,1,5.7,4,Single,1,9
+17,21,Male,Undergraduate,Mexico,5.6,Twitter,Yes,1,7.7,4,Single,4,7
+18,25,Male,Graduate,Mexico,1.8,Snapchat,No,0,8.5,10,In Relationship,0,6
+19,20,Female,Graduate,Mexico,6.2,Instagram,Yes,1,7,3,Single,4,10
+20,24,Male,Graduate,Mexico,4,Instagram,Yes,1,4.8,3,In Relationship,1,5
 21,18,Male,Graduate,Mexico,7.5,Facebook,Yes,1,8.9,3,Single,3,8
-22,23,Female,High School,Mexico,1.6,Twitter,Yes,1,6.8,5,In Relationship,3,1
+22,23,Female,Graduate,Mexico,1.6,Twitter,No,0,6.8,5,In Relationship,3,2
 23,19,Male,Undergraduate,Mexico,7.4,TikTok,Yes,1,6.4,1,Single,5,10
-24,23,Male,Undergraduate,Mexico,4.8,YouTube,No,0,7.4,7,In Relationship,2,7
+24,23,Male,Undergraduate,Mexico,4.8,YouTube,No,0,7.4,7,In Relationship,2,6
 25,22,Male,Graduate,Mexico,6.1,Facebook,Yes,1,7.8,6,Single,4,9
-26,24,Male,High School,Mexico,4.7,Twitter,Yes,1,4.0,2,In Relationship,1,8
-27,25,Female,Graduate,Mexico,7.4,Snapchat,Yes,1,5.9,4,In Relationship,1,8
-28,22,Female,Undergraduate,Mexico,5.7,Snapchat,Yes,1,7.3,6,Single,1,8
+26,24,Male,Graduate,Mexico,4.7,Twitter,Yes,1,4,2,In Relationship,1,9
+27,25,Female,Graduate,Mexico,7.4,Snapchat,Yes,1,5.9,4,In Relationship,1,10
+28,22,Female,Undergraduate,Mexico,5.7,Snapchat,Yes,1,7.3,6,Single,1,7
 29,21,Male,Undergraduate,Mexico,2.5,TikTok,Yes,1,4.8,2,Complicated,2,6
-30,17,Female,Graduate,Mexico,3.7,Twitter,No,0,6.6,6,Complicated,0,4
-31,25,Male,High School,Mexico,5.8,Twitter,Yes,1,6.9,8,In Relationship,0,6
-32,22,Female,Graduate,Mexico,1.2,YouTube,Yes,1,5.6,3,Complicated,1,2
+30,17,Female,Graduate,Mexico,3.7,Twitter,Yes,1,6.6,6,Complicated,0,5
+31,25,Male,Graduate,Mexico,5.8,Twitter,Yes,1,6.9,8,In Relationship,0,6
+32,22,Female,Graduate,Mexico,1.2,YouTube,No,0,5.6,3,Complicated,1,2
 33,25,Male,Graduate,Mexico,5.6,Instagram,Yes,1,6.3,3,Single,4,9
-34,24,Female,Graduate,Mexico,3.0,Facebook,No,0,6.9,8,Single,0,5
-35,19,Female,Undergraduate,Mexico,3.0,TikTok,Yes,1,6.0,5,In Relationship,4,8
-36,21,Male,Graduate,Mexico,5.5,Facebook,Yes,1,9.0,5,In Relationship,4,10
+34,24,Female,Graduate,Mexico,3,Facebook,No,0,6.9,8,Single,0,5
+35,19,Female,Undergraduate,Mexico,3,TikTok,Yes,1,6,5,In Relationship,4,8
+36,21,Male,Graduate,Mexico,5.5,Facebook,Yes,1,9,5,In Relationship,4,7
 37,21,Male,Undergraduate,Mexico,2.9,TikTok,No,0,8.4,7,Single,2,6
-38,18,Male,High School,Mexico,7.0,Snapchat,Yes,1,5.6,6,Complicated,2,10
+38,18,Male,Graduate,Mexico,7,Snapchat,Yes,1,5.6,6,Complicated,2,10
 39,23,Male,Undergraduate,Mexico,2.2,Snapchat,No,0,6.1,7,In Relationship,0,5
 40,20,Male,Undergraduate,Mexico,4.8,Instagram,Yes,1,8.4,1,In Relationship,5,10
 41,17,Male,Graduate,Mexico,7.6,Instagram,Yes,1,5.2,6,In Relationship,3,10
 42,22,Male,Undergraduate,Mexico,4.6,Twitter,Yes,1,8.9,4,In Relationship,4,10
 43,20,Male,Undergraduate,Mexico,4.6,YouTube,No,0,8.5,7,Complicated,1,8
 44,19,Male,Undergraduate,Mexico,2.7,YouTube,No,0,7.5,8,In Relationship,1,6
-45,17,Female,High School,Mexico,1.5,Instagram,Yes,1,8.2,6,In Relationship,3,1
+45,17,Female,Graduate,Mexico,1.5,Instagram,No,0,8.2,6,In Relationship,3,1
 46,22,Male,Graduate,Mexico,2.6,Twitter,Yes,1,4.2,4,Single,1,5
 47,23,Female,Graduate,Mexico,7.7,Snapchat,Yes,1,8.6,6,Complicated,4,9
-48,25,Female,High School,Mexico,2.2,TikTok,Yes,1,5.8,4,In Relationship,4,9
-49,19,Female,High School,Mexico,5.7,Facebook,Yes,1,7.1,3,Complicated,3,8
-50,20,Female,Undergraduate,Mexico,4.2,Twitter,Yes,1,5.0,2,Single,5,8
-51,23,Male,High School,Mexico,7.0,Facebook,Yes,1,7.8,1,Complicated,5,8
-52,21,Female,High School,Mexico,3.8,Facebook,No,0,7.6,8,Complicated,1,6
-53,20,Male,High School,Mexico,3.6,YouTube,No,0,6.9,7,Complicated,2,6
-54,24,Male,Undergraduate,Mexico,5.9,TikTok,Yes,1,5.3,4,In Relationship,3,7
-55,21,Male,High School,Mexico,4.3,Twitter,No,0,6.8,8,Single,2,8
-56,20,Male,Graduate,Mexico,6.0,Snapchat,Yes,1,8.1,2,Complicated,5,8
-57,17,Female,Undergraduate,Mexico,3.9,Twitter,Yes,1,6.6,5,In Relationship,3,3
-58,17,Male,High School,Mexico,5.1,Twitter,Yes,1,5.9,3,Single,2,8
-59,23,Male,High School,Mexico,2.6,TikTok,Yes,1,6.9,4,Complicated,3,3
+48,25,Female,Graduate,Mexico,2.2,TikTok,Yes,1,5.8,4,In Relationship,4,8
+49,19,Female,Graduate,Mexico,5.7,Facebook,Yes,1,7.1,3,Complicated,3,8
+50,20,Female,Undergraduate,Mexico,4.2,Twitter,Yes,1,5,2,Single,5,8
+51,23,Male,Graduate,Mexico,7,Facebook,Yes,1,7.8,1,Complicated,5,10
+52,21,Female,Graduate,Mexico,3.8,Facebook,No,0,7.6,8,Complicated,1,5
+53,20,Male,Graduate,Mexico,3.6,YouTube,Yes,1,6.9,7,Complicated,2,7
+54,24,Male,Undergraduate,Mexico,5.9,TikTok,Yes,1,5.3,4,In Relationship,3,9
+55,21,Male,Graduate,Mexico,4.3,Twitter,Yes,1,6.8,8,Single,2,8
+56,20,Male,Graduate,Mexico,6,Snapchat,Yes,1,8.1,2,Complicated,5,8
+57,17,Female,Undergraduate,Mexico,3.9,Twitter,Yes,1,6.6,5,In Relationship,3,6
+58,17,Male,Graduate,Mexico,5.1,Twitter,Yes,1,5.9,3,Single,2,8
+59,23,Male,Graduate,Mexico,2.6,TikTok,No,0,6.9,4,Complicated,3,3
 60,22,Female,Graduate,Mexico,6.5,Facebook,Yes,1,6.5,8,In Relationship,0,9
-61,20,Female,Graduate,Mexico,5.2,Snapchat,Yes,1,5.3,6,Single,1,8
-62,24,Female,Undergraduate,Mexico,3.3,Snapchat,Yes,1,5.1,4,Single,0,3
+61,20,Female,Graduate,Mexico,5.2,Snapchat,Yes,1,5.3,6,Single,1,9
+62,24,Female,Undergraduate,Mexico,3.3,Snapchat,Yes,1,5.1,4,Single,0,6
 63,19,Female,Graduate,Mexico,7.9,Facebook,Yes,1,4.1,1,In Relationship,2,9
-64,20,Female,Undergraduate,Mexico,5.7,Twitter,Yes,1,7.7,6,In Relationship,4,10
-65,18,Female,Graduate,Mexico,6.0,Twitter,Yes,1,6.2,7,Complicated,2,6
-66,20,Female,High School,Mexico,1.9,TikTok,Yes,1,6.1,6,Single,3,3
-67,23,Male,Undergraduate,Mexico,4.4,Snapchat,Yes,1,4.5,4,Complicated,0,7
-68,17,Female,High School,Mexico,4.3,YouTube,Yes,1,6.5,5,Single,3,8
-69,21,Male,Undergraduate,Mexico,4.9,Twitter,Yes,1,4.8,2,Single,1,6
-70,20,Male,Graduate,Mexico,2.3,Facebook,Yes,1,6.2,6,In Relationship,3,4
-71,19,Female,Graduate,Mexico,4.4,YouTube,Yes,1,8.1,4,Complicated,5,9
-72,25,Male,High School,Mexico,3.0,TikTok,Yes,1,7.3,3,Complicated,5,9
-73,24,Female,High School,Mexico,7.3,TikTok,Yes,1,7.3,4,Single,5,8
-74,21,Male,Undergraduate,Mexico,3.8,YouTube,Yes,1,7.4,5,Complicated,3,6
-75,19,Male,Undergraduate,Mexico,7.4,Twitter,Yes,1,4.3,1,Complicated,2,8
-76,24,Female,Graduate,Mexico,1.5,Twitter,Yes,1,4.7,4,Single,0,2
-77,17,Male,Undergraduate,Mexico,6.7,YouTube,Yes,1,5.5,4,In Relationship,4,9
+64,20,Female,Undergraduate,Mexico,5.7,Twitter,Yes,1,7.7,6,In Relationship,4,7
+65,18,Female,Graduate,Mexico,6,Twitter,Yes,1,6.2,7,Complicated,2,8
+66,20,Female,Graduate,Mexico,1.9,TikTok,No,0,6.1,6,Single,3,3
+67,23,Male,Undergraduate,Mexico,4.4,Snapchat,Yes,1,4.5,4,Complicated,0,8
+68,17,Female,Graduate,Mexico,4.3,YouTube,Yes,1,6.5,5,Single,3,8
+69,21,Male,Undergraduate,Mexico,4.9,Twitter,Yes,1,4.8,2,Single,1,8
+70,20,Male,Graduate,Mexico,2.3,Facebook,No,0,6.2,6,In Relationship,3,4
+71,19,Female,Graduate,Mexico,4.4,YouTube,Yes,1,8.1,4,Complicated,5,7
+72,25,Male,Graduate,Mexico,3,TikTok,No,0,7.3,3,Complicated,5,5
+73,24,Female,Graduate,Mexico,7.3,TikTok,Yes,1,7.3,4,Single,5,10
+74,21,Male,Undergraduate,Mexico,3.8,YouTube,No,0,7.4,5,Complicated,3,5
+75,19,Male,Undergraduate,Mexico,7.4,Twitter,Yes,1,4.3,1,Complicated,2,9
+76,24,Female,Graduate,Mexico,1.5,Twitter,No,0,4.7,4,Single,0,2
+77,17,Male,Undergraduate,Mexico,6.7,YouTube,Yes,1,5.5,4,In Relationship,4,10
 78,22,Female,Graduate,Mexico,6.3,Facebook,Yes,1,8.9,8,In Relationship,0,9
-79,21,Male,Graduate,Mexico,3.4,YouTube,Yes,1,4.3,4,In Relationship,3,5
+79,21,Male,Graduate,Mexico,3.4,YouTube,Yes,1,4.3,4,In Relationship,3,7
 80,25,Female,Graduate,Mexico,3.4,Facebook,No,0,7.8,7,In Relationship,1,4
 81,18,Female,Graduate,Mexico,7.8,Instagram,Yes,1,6.7,5,Complicated,3,10
-82,17,Female,Graduate,Mexico,3.3,Facebook,Yes,1,5.6,5,Single,4,9
-83,22,Female,High School,Mexico,4.0,Twitter,Yes,1,8.9,3,In Relationship,5,9
-84,17,Male,Undergraduate,Mexico,4.5,Instagram,Yes,1,6.0,3,In Relationship,3,7
-85,25,Male,High School,Mexico,3.8,TikTok,Yes,1,4.2,2,In Relationship,1,6
-86,24,Male,Undergraduate,Mexico,4.4,Snapchat,No,0,7.5,7,Complicated,1,8
+82,17,Female,Graduate,Mexico,3.3,Facebook,Yes,1,5.6,5,Single,4,7
+83,22,Female,Graduate,Mexico,4,Twitter,No,0,8.9,3,In Relationship,5,5
+84,17,Male,Undergraduate,Mexico,4.5,Instagram,Yes,1,6,3,In Relationship,3,7
+85,25,Male,Graduate,Mexico,3.8,TikTok,Yes,1,4.2,2,In Relationship,1,7
+86,24,Male,Undergraduate,Mexico,4.4,Snapchat,No,0,7.5,7,Complicated,1,6
 87,20,Female,Graduate,Mexico,6.2,Snapchat,Yes,1,5.7,5,In Relationship,2,10
-88,20,Male,Undergraduate,Mexico,4.7,Facebook,Yes,1,5.8,5,In Relationship,3,6
+88,20,Male,Undergraduate,Mexico,4.7,Facebook,Yes,1,5.8,5,In Relationship,3,8
 89,18,Male,Undergraduate,Mexico,4.6,Facebook,Yes,1,7.1,6,In Relationship,3,6
-90,21,Male,Graduate,Mexico,5.9,Facebook,Yes,1,5.3,3,Complicated,0,7
-91,18,Male,Undergraduate,Mexico,8.0,YouTube,Yes,1,6.9,6,Single,2,10
-92,25,Female,High School,Mexico,2.4,Instagram,Yes,1,5.9,5,In Relationship,4,10
-93,17,Male,Undergraduate,Mexico,4.6,Facebook,Yes,1,8.5,3,Complicated,4,10
-94,23,Female,Undergraduate,Mexico,3.2,YouTube,Yes,1,6.9,4,In Relationship,4,9
-95,20,Female,High School,Mexico,7.7,TikTok,Yes,1,8.2,5,Complicated,4,9
+90,21,Male,Graduate,Mexico,5.9,Facebook,Yes,1,5.3,3,Complicated,0,8
+91,18,Male,Undergraduate,Mexico,8,YouTube,Yes,1,6.9,6,Single,2,10
+92,25,Female,Graduate,Mexico,2.4,Instagram,Yes,1,5.9,5,In Relationship,4,7
+93,17,Male,Undergraduate,Mexico,4.6,Facebook,Yes,1,8.5,3,Complicated,4,7
+94,23,Female,Undergraduate,Mexico,3.2,YouTube,Yes,1,6.9,4,In Relationship,4,8
+95,20,Female,Graduate,Mexico,7.7,TikTok,Yes,1,8.2,5,Complicated,4,9
 96,20,Female,Graduate,Mexico,3.9,Snapchat,No,0,6.5,8,Single,0,4
-97,18,Male,Graduate,Mexico,6.6,Facebook,Yes,1,8.1,5,Complicated,4,10
-98,18,Female,Graduate,Mexico,6.5,Twitter,Yes,1,5.0,5,In Relationship,2,9
-99,22,Male,High School,Mexico,2.0,Twitter,Yes,1,6.6,4,In Relationship,4,10
+97,18,Male,Graduate,Mexico,6.6,Facebook,Yes,1,8.1,5,Complicated,4,9
+98,18,Female,Graduate,Mexico,6.5,Twitter,Yes,1,5,5,In Relationship,2,9
+99,22,Male,Graduate,Mexico,2,Twitter,No,0,6.6,4,In Relationship,4,6
 100,21,Female,Graduate,Mexico,6.7,Twitter,Yes,1,4.4,1,Complicated,3,8

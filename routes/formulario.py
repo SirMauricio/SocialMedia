@@ -6,13 +6,16 @@ import os
 from xhtml2pdf import pisa
 from io import BytesIO
 import tempfile
+import matplotlib.pyplot as plt
+import numpy as np
+import base64
 from utils.opciones_formulario import paises, niveles_academicos, plataformas_sociales, estados_civiles
 
 formulario_bp = Blueprint('formulario', __name__)
 
 # ──────────────────────────────
 # Traducciones
-paises_map_america = {
+paises_map = {
     "Argentina": "Argentina",
     "Bolivia": "Bolivia",
     "Brasil": "Brazil",
@@ -39,16 +42,17 @@ paises_map_america = {
 }
 
 niveles_map = {
-    "Preparatoria": "High School",
-    "Universidad": "University", 
-    "Posgrado ": "Postgrad",
-    "Otro": "Other"
+    "Sin estudios": "Undergraduate",
+    "Preparatoria": "Graduate",
+    "Universidad": "Graduate",
+    "Posgrado": "Graduate",
+    "Otro": "Graduate"
 }
 
 estados_civiles_map = {
     "Soltero/a": "Single", 
     "En una relación": "In Relationship", 
-    "Casado/a": "Married",
+    "Es complicado": "Complicated",
     "Otro tipo de relación": "Other"
 }
 
@@ -82,35 +86,72 @@ model = joblib.load(MODEL_PATH)
 input_columns = joblib.load(COLUMNS_PATH)
 
 # ──────────────────────────────
-# Generación del gráfico
+# Generación del gráfico radar
 # ──────────────────────────────
 def generar_grafico_radar(datos):
     etiquetas = ['Adicción', 'Salud Mental', 'Impacto Académico']
     valores = [
-        datos['Addicted_Score'],
-        datos['Mental_Health_Score'],
-        datos['Affects_Academic_Performance(True booleano)'] * 10
+        float(datos['Addicted_Score']),
+        float(datos['Mental_Health_Score']),
+        float(datos['Affects_Academic_Performance(True booleano)']) * 10
     ]
-
     valores += valores[:1]
     angulos = np.linspace(0, 2 * np.pi, len(etiquetas), endpoint=False).tolist()
     angulos += angulos[:1]
 
     fig, ax = plt.subplots(figsize=(4, 4), subplot_kw=dict(polar=True))
-    ax.plot(angulos, valores, color='#2980b9', linewidth=2)
-    ax.fill(angulos, valores, color='#2980b9', alpha=0.3)
+    ax.plot(angulos, valores, color='#1abc9c', linewidth=2, marker='o')
+    ax.fill(angulos, valores, color='#1abc9c', alpha=0.25)
     ax.set_yticks([2, 4, 6, 8, 10])
     ax.set_yticklabels(['2', '4', '6', '8', '10'], color="gray", size=8)
     ax.set_xticks(angulos[:-1])
     ax.set_xticklabels(etiquetas)
     ax.set_title('Evaluación General', y=1.1)
 
+    # Agregar valores numéricos sobre los puntos
+    for i, v in enumerate(valores[:-1]):
+        ax.text(angulos[i], v + 0.5, f"{v:.1f}", color='black', ha='center', fontsize=8)
+
     buf = BytesIO()
     plt.tight_layout()
-    plt.savefig(buf, format='png')
-    plt.close()
+    plt.savefig(buf, format='png', dpi=150)
     buf.seek(0)
-    return base64.b64encode(buf.read()).decode('utf-8')
+    image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+    plt.close()
+    return image_base64
+
+# ──────────────────────────────
+# Generación del gráfico barras
+# ──────────────────────────────
+
+def generar_grafico_barras(datos):
+    labels = ['Adicción', 'Salud Mental', 'Impacto Académico']
+    values = [
+        float(datos['Addicted_Score']),
+        float(datos['Mental_Health_Score']),
+        float(datos['Affects_Academic_Performance(True booleano)']) * 10
+    ]
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    colores = ['#e74c3c', '#2980b9', '#f39c12']
+    bars = ax.barh(labels, values, color=colores)
+
+    ax.set_xlim(0, 10)
+    ax.set_xlabel('Puntuación')
+    ax.set_title("Evaluación de Uso de Redes Sociales")
+
+    for i, bar in enumerate(bars):
+        ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height()/2,
+                f"{values[i]:.2f}", va='center', fontsize=9)
+
+    plt.tight_layout()
+
+    buf = BytesIO()
+    plt.savefig(buf, format='png', dpi=150)
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+    plt.close()
+    return image_base64
 
 # ──────────────────────────────
 # Ruta del formulario
@@ -214,6 +255,10 @@ def formulario():
             'Mental_Health_Score': salud_mental
         }
 
+        grafico_radar = generar_grafico_radar(datos_completos)
+        grafico_barras = generar_grafico_barras(datos_completos)
+
+
         datos_mostrar = {
             **datos_usuario_es,
             'Affects_Academic_Performance': afectacion_texto,
@@ -225,10 +270,11 @@ def formulario():
         # Guardar
         df_final = pd.DataFrame([datos_completos])
         engine = get_engine()
-        df_final.to_sql('socialmedia_lectura', con=engine, if_exists='append', index=False)
+        df_final.to_sql('SocialMediaLectura', con=engine, if_exists='append', index=False)
 
         # Generar PDF
-        rendered = render_template("resultado_pdf.html", datos=datos_mostrar)
+        rendered = render_template("resultado_pdf.html", datos=datos_mostrar, grafico_radar=grafico_radar, grafico_barras=grafico_barras)
+
         pdf_file = BytesIO()
         pisa_status = pisa.CreatePDF(rendered, dest=pdf_file)
 
@@ -238,7 +284,14 @@ def formulario():
                 f.write(pdf_file.getvalue())
                 pdf_path = f.name
 
-        return render_template("resultado.html", datos=datos_mostrar, pdf_path=pdf_path)
+        return render_template("resultado.html",
+                               datos=datos_mostrar,
+                               pdf_path=pdf_path,
+                               grafico_radar=grafico_radar,
+                               afectacion_bool=afectacion_bool,
+                               adiccion=adiccion,
+                               salud_mental=salud_mental)
+
 
     # GET
     return render_template("formulario.html",
