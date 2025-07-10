@@ -10,3 +10,4 @@ xhtml2pdf
 openpyxl
 flask
 werkzeug
+flask-mail

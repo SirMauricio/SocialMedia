@@ -1,22 +1,38 @@
 {% extends "base.html" %}
 
+{% block title %}Subir Archivo - SocialMedia{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>Subir Archivo</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <div class="card shadow-lg p-5 border-0 rounded-4 bg-light">
+      <h1 class="text-center mb-4 text-success">
+        <i class="bi bi-upload"></i> Subir Archivo
+      </h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">{{ message }}</div>
-            {% endfor %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+          {% endfor %}
         {% endif %}
-    {% endwith %}
-    
-    <form method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="file">Selecciona un archivo (CSV o XLSX):</label>
-            <input type="file" class="form-control-file" id="file" name="file" accept=".csv,.xlsx" required>
+      {% endwith %}
+
+      <form method="post" enctype="multipart/form-data" class="mt-4">
+        <div class="mb-3">
+          <label for="file" class="form-label">Selecciona un archivo (CSV o XLSX):</label>
+          <input type="file" class="form-control" id="file" name="file" accept=".csv,.xlsx" required>
         </div>
-        <button type="submit" class="btn btn-primary">Subir</button>
-    </form>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-lg">
+            <i class="bi bi-cloud-arrow-up"></i> Subir
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

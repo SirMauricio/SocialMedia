@@ -14,7 +14,7 @@ def detectar_tipos(df: pd.DataFrame):
         elif pd.api.types.is_object_dtype(tipo):
             tipos_sql[columna] = String(500) 
         else:
-            print(f"⚠️ Tipo no reconocido: {columna} -> {tipo}")
+            print(f"Tipo no reconocido: {columna} -> {tipo}")
     return tipos_sql
 
 def importar_csv(nombre_archivo='SocialMediaLectura.csv'):

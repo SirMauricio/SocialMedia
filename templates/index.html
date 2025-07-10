@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio - Flask + IA{% endblock %}
+{% block title %}Inicio - SocialMedia + IA{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-10 col-lg-8">
-    <div class="card shadow p-4 border-0 rounded-3 bg-white">
-      <h1 class="text-center mb-4">Bienvenido al inicio del registro</h1>
-      <p class="lead text-center">
-        Esta aplicación permite registrar datos sobre el uso de redes sociales y predecir cómo afecta al rendimiento académico, salud mental y adicción digital.
+    <div class="card shadow-lg p-5 border-0 rounded-4 bg-light">
+      <h1 class="text-center mb-4 text-primary">Bienvenido</h1>
+      <p class="lead text-center mb-4">
+        Evalúe su uso de redes sociales y descubra cómo impacta en su salud mental y rendimiento académico.
       </p>
-      <div class="text-center mt-4">
-        <a href="/formulario" class="btn btn-primary me-3">Ir al Formulario</a>
-        <a href="/datos" class="btn btn-outline-secondary">Ver Estadísticas</a>
-        <a class="btn btn-success" href="/upload">Subir Archivos</a> <!-- SE SUBEN LOS ARCHIVOS-->
+
+      <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+        <a href="/formulario" class="btn btn-primary btn-lg">
+          <i class="bi bi-pencil-square me-1"></i> Ir al Formulario
+        </a>
+        <a href="/datos" class="btn btn-outline-secondary btn-lg">
+          <i class="bi bi-table me-1"></i> Ver Registros
+        </a>
+        <a href="/upload" class="btn btn-success btn-lg">
+          <i class="bi bi-upload me-1"></i> Subir Archivos
+        </a>
       </div>
     </div>
   </div>

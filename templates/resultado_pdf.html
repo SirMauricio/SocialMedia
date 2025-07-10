@@ -2,38 +2,70 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Resultados del Formulario</title>
+    <title>Reporte de Evaluación</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 20px 30px;
+            font-size: 12px;
+            color: #2c3e50;
         }
+
         h1 {
             text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
+
+        .section-title {
+            background-color: #ecf0f1;
+            padding: 6px;
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            border-left: 5px solid #3498db;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 8px;
         }
+
         th, td {
-            padding: 10px;
-            border: 1px solid #888;
+            padding: 6px;
+            border: 1px solid #ccc;
             text-align: left;
+            font-size: 11.5px;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #f7f9fa;
         }
+
         tr:nth-child(even) {
-            background-color: #f8f8f8;
+            background-color: #fdfefe;
         }
+
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .diagnostico {
+            margin-top: 18px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #e67e22;
+            font-size: 11.5px;
+            line-height: 1.4;
+        }
+
         .footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #666;
+            margin-top: 25px;
+            font-size: 10px;
+            color: #777;
         }
     </style>
 </head>
@@ -41,25 +73,76 @@
 
     <h1>Reporte de Evaluación</h1>
 
+    <div class="section-title"> Datos Proporcionados</div>
     <table>
-        <thead>
-            <tr>
-                <th>Campo</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
         <tbody>
-            {% for campo, valor in datos.items() %}
-            <tr>
-                <td>{{ campo.replace('_', ' ') }}</td>
-                <td>{{ valor }}</td>
-            </tr>
-            {% endfor %}
+            <tr><td><strong>Edad</strong></td><td>{{ datos.Age }}</td></tr>
+            <tr><td><strong>Género</strong></td><td>{{ datos.Gender }}</td></tr>
+            <tr><td><strong>Nivel Académico</strong></td><td>{{ datos.Academic_Level }}</td></tr>
+            <tr><td><strong>País</strong></td><td>{{ datos.Country }}</td></tr>
+            <tr><td><strong>Horas promedio de uso</strong></td><td>{{ datos.Avg_Daily_Usage_Hours }}</td></tr>
+            <tr><td><strong>Plataforma más usada</strong></td><td>{{ datos.Most_Used_Platform }}</td></tr>
+            <tr><td><strong>Horas de sueño</strong></td><td>{{ datos.Sleep_Hours_Per_Night }}</td></tr>
+            <tr><td><strong>Estado civil</strong></td><td>{{ datos.Relationship_Status }}</td></tr>
+            <tr><td><strong>Conflictos en redes sociales</strong></td><td>{{ datos.Conflicts_Over_Social_Media }}</td></tr>
         </tbody>
     </table>
 
+    <div class="section-title"> Resultados de la IA</div>
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>¿Afecta el rendimiento académico?</strong></td>
+                <td class="highlight">{{ datos.Affects_Academic_Performance }}</td>
+            </tr>
+            <tr>
+                <td><strong>Puntaje de adicción</strong></td>
+                <td>{{ datos.Addicted_Score }}</td>
+            </tr>
+            <tr>
+                <td><strong>Puntaje de salud mental</strong></td>
+                <td>{{ datos.Mental_Health_Score }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title"> Diagnóstico Automatizado</div>
+   <div class="diagnostico">
+    {% if datos.Affects_Academic_Performance == "Yes" %}
+        <p><strong>Rendimiento Académico:</strong> Se detecta un impacto negativo en el rendimiento académico asociado al uso de redes sociales. Se recomienda establecer límites de uso diario.</p>
+    {% else %}
+        <p><strong>Rendimiento Académico:</strong> No se identifican efectos negativos significativos en el rendimiento académico.</p>
+    {% endif %}
+
+    {% if datos.Addicted_Score >= 8 %}
+        <p><strong>Adicción:</strong> El puntaje indica una alta dependencia de redes sociales. Se sugiere considerar estrategias de desconexión digital o apoyo psicológico.</p>
+    {% elif datos.Addicted_Score >= 6 %}
+        <p><strong>Adicción:</strong> El nivel de uso es moderado. Ser consciente del tiempo en redes sociales puede ayudar a evitar dependencia futura.</p>
+    {% else %}
+        <p><strong>Adicción:</strong> No se observa un patrón adictivo significativo.</p>
+    {% endif %}
+
+    {% if datos.Mental_Health_Score <= 5 %}
+        <p><strong>Salud Mental:</strong> El puntaje podría reflejar indicios de afectación emocional. Se recomienda mantener hábitos saludables y apoyo si es necesario.</p>
+    {% else %}
+        <p><strong>Salud Mental:</strong> El puntaje es adecuado y no indica alteraciones emocionales relacionadas con el uso de redes.</p>
+    {% endif %}
+</div>
+
+    <div class="section-title">Visualización de Resultados</div>
+    <div style="text-align:center; margin-bottom: 20px;">
+        <h3>Gráfico Radar</h3>
+        <img src="data:image/png;base64,{{ grafico_radar }}" alt="Gráfico radar" style="max-width: 400px;">
+    </div>
+
+    <div style="text-align:center;">
+        <h3>Gráfico de Barras</h3>
+        <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico barras" style="max-width: 500px;">
+    </div>
+
+
     <div class="footer">
-        Generado automáticamente por el sistema de predicción de uso de redes sociales.
+        Este informe fue generado automáticamente por el sistema de predicción del uso de redes sociales.
     </div>
 
 </body>
