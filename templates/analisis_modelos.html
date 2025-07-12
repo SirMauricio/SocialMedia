@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Análisis de Modelos de IA{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Análisis Predictivo con Múltiples Modelos</h2>
+
+    <!-- Valores reales del formulario -->
+    <div class="alert alert-info shadow-sm">
+        <h5 class="mb-3"> Valores Reales del Usuario:</h5>
+        <ul class="mb-0">
+            <li><strong>Adicción:</strong> {{ reales['Adicción'] }}</li>
+            <li><strong>Salud Mental:</strong> {{ reales['Salud Mental'] }}</li>
+            <li><strong>Rendimiento Académico:</strong> {{ reales['Rendimiento Académico'] }}</li>
+        </ul>
+    </div>
+
+    <!-- Resultados por modelo -->
+    <div class="row">
+        {% for resultado in resultados %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-primary">{{ resultado.nombre | replace("_", " ") | title }}</h5>
+                    <p class="text-muted small">{{ resultado.descripcion }}</p>
+
+                    {% if resultado.grafica or resultado.grafica_real %}
+                    <div class="row mb-3">
+                        {% if resultado.grafica %}
+                        <div class="col-6 text-center">
+                            <p class="mb-1"><strong>Predicción</strong></p>
+                            <img src="data:image/png;base64,{{ resultado.grafica }}"
+                                class="img-fluid border rounded"
+                                alt="Predicción de {{ resultado.nombre }}">
+                        </div>
+                        {% endif %}
+                        {% if resultado.grafica_real %}
+                        <div class="col-6 text-center">
+                            <p class="mb-1"><strong>Valor Real</strong></p>
+                            <img src="data:image/png;base64,{{ resultado.grafica_real }}"
+                                class="img-fluid border rounded"
+                                alt="Valor Real de {{ resultado.nombre }}">
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <p class="text-center text-muted my-3">
+                        <i class="fas fa-chart-line me-2"></i>No se requiere gráfico para este modelo.
+                    </p>
+                    {% endif %}
+
+                    <div class="mt-auto pt-2">
+                        <p><strong>Diagnóstico:</strong> {{ resultado.diagnostico }}</p>
+
+                        {% if resultado.valor is defined %}
+                            <p><strong>Valor Predicho:</strong> {{ resultado.valor }}</p>
+                        {% endif %}
+
+                        {% if 'Adicción' in resultado.nombre %}
+                            <p><strong>Valor Real:</strong> {{ reales['Adicción'] }}</p>
+                        {% elif 'Salud Mental' in resultado.nombre %}
+                            <p><strong>Valor Real:</strong> {{ reales['Salud Mental'] }}</p>
+                        {% elif 'Rendimiento Académico' in resultado.nombre %}
+                            <p><strong>Valor Real:</strong> {{ reales['Rendimiento Académico'] }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('formulario.formulario') }}" class="btn btn-outline-primary">
+            Volver al Formulario
+        </a>
+    </div>
+</div>
+{% endblock %}

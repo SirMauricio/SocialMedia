@@ -23,11 +23,12 @@
     <li class="list-group-item">
       <strong>¿Afecta el rendimiento académico?</strong>
       <span class="badge bg-{{ 'danger' if datos.Affects_Academic_Performance == 'Sí' else 'success' }}">
-        {{ datos.Affects_Academic_Performance }}
+        {{ resumen.Affects_Academic_Performance }}
       </span>
     </li>
-    <li class="list-group-item"><strong>Puntaje de adicción:</strong> {{ datos.Addicted_Score }}</li>
-    <li class="list-group-item"><strong>Puntaje de salud mental:</strong> {{ datos.Mental_Health_Score }}</li>
+    <li class="list-group-item"><strong>Puntaje de adicción:</strong> {{ resumen.Addicted_Score }}</li>
+    <li class="list-group-item"><strong>Puntaje de salud mental:</strong> {{ resumen.Mental_Health_Score }}</li>
+
   </ul>
 
   <div class="mt-5 text-center">
@@ -40,36 +41,42 @@
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Adicción
-        {% if adiccion >= 8 %}
-          <span class="badge bg-danger rounded-pill">Alta ({{ adiccion }})</span>
-        {% elif adiccion >= 6 %}
-          <span class="badge bg-warning text-dark rounded-pill">Moderada ({{ adiccion }})</span>
+        {% if resumen.Addicted_Score >= 8 %}
+          <span class="badge bg-danger rounded-pill">Alta ({{ resumen.Addicted_Score }})</span>
+        {% elif resumen.Addicted_Score >= 6 %}
+          <span class="badge bg-warning text-dark rounded-pill">Moderada ({{ resumen.Addicted_Score }})</span>
         {% else %}
-          <span class="badge bg-success rounded-pill">Baja ({{ adiccion }})</span>
+          <span class="badge bg-success rounded-pill">Baja ({{ resumen.Addicted_Score }})</span>
         {% endif %}
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Salud Mental
-        {% if salud_mental <= 5 %}
-          <span class="badge bg-danger rounded-pill">Alerta ({{ salud_mental }})</span>
+        {% if resumen.Mental_Health_Score <= 5 %}
+          <span class="badge bg-danger rounded-pill">Alerta ({{ resumen.Mental_Health_Score }})</span>
         {% else %}
-          <span class="badge bg-success rounded-pill">Adecuada ({{ salud_mental }})</span>
+          <span class="badge bg-success rounded-pill">Adecuada ({{ resumen.Mental_Health_Score }})</span>
         {% endif %}
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        Impacto Académico
-        {% if afectacion_bool == 1 %}
-          <span class="badge bg-danger rounded-pill">Impacto Negativo</span>
-        {% else %}
-          <span class="badge bg-success rounded-pill">Sin impacto</span>
-        {% endif %}
-      </li>
+  Impacto Académico
+  {% if resumen['Affects_Academic_Performance(True booleano)'] == 1 %}
+    <span class="badge bg-danger rounded-pill">
+      Impacto Negativo ({{ resumen.Affects_Academic_Performance_Prob_Score }})
+    </span>
+  {% else %}
+    <span class="badge bg-success rounded-pill">
+      Sin impacto ({{ resumen.Affects_Academic_Performance_Prob_Score }})
+    </span>
+  {% endif %}
+</li>
+
     </ul>
   </div>
 
   <div class="mt-4 text-end">
     <a href="/" class="btn btn-outline-primary">Volver al inicio</a>
     <a href="/descargar_pdf?path={{ pdf_path }}" class="btn btn-primary" target="_blank">Descargar PDF</a>
+    <a href="{{ url_for('analisis.analisis_modelos') }}" class="btn btn-success">Ver Análisis Detallado con Modelos de IA</a>
   </div>
 </div>
 
