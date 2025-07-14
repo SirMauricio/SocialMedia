@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import base64
 from utils.opciones_formulario import paises, niveles_academicos, plataformas_sociales, estados_civiles
-from routes.analisis import calcular_modelos  # función que recibe datos_usuario y retorna resultados
+from routes.analisis import calcular_modelos  
 from flask import session, redirect, url_for
 import io
 
@@ -96,7 +96,8 @@ def generar_grafico_radar(datos):
     valores = [
         float(datos['Addicted_Score']),
         float(datos['Mental_Health_Score']),
-        float(datos['Affects_Academic_Performance(True booleano)']) * 10
+        float(datos.get('Affects_Academic_Performance_Prob_Score', 0))
+        #float(datos['Affects_Academic_Performance(True booleano)']) * 10
     ]
     valores += valores[:1]
     angulos = np.linspace(0, 2 * np.pi, len(etiquetas), endpoint=False).tolist()
@@ -132,7 +133,8 @@ def generar_grafico_barras(datos):
     values = [
         float(datos['Addicted_Score']),
         float(datos['Mental_Health_Score']),
-        float(datos['Affects_Academic_Performance(True booleano)']) * 10
+        float(datos.get('Affects_Academic_Performance_Prob_Score', 0))
+        #float(datos['Affects_Academic_Performance(True booleano)']) * 10
     ]
 
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -155,8 +157,6 @@ def generar_grafico_barras(datos):
     image_base64 = base64.b64encode(buf.read()).decode('utf-8')
     plt.close()
     return image_base64
-
-
 
 # ──────────────────────────────
 # Ruta del formulario
@@ -386,6 +386,50 @@ def graficas():
 
     return render_template("analisis_modelos.html", resultados=resultados_list)
 
+# ──────────────────────────────
+# Ruta para mostrar PDF
+# ──────────────────────────────
+
+@formulario_bp.route('/generar_pdf')
+def generar_pdf():
+    datos_usuario_es = session.get('datos_usuario_es')
+    resumen = session.get('datos_completos')
+
+    if not datos_usuario_es or not resumen:
+        return redirect(url_for('formulario.formulario'))
+
+    # Combinar todos los datos para gráficos y HTML
+    datos_para_pdf = {
+        **datos_usuario_es,
+        **resumen
+    }
+
+    # Generar gráficas con los mismos datos combinados
+    grafico_radar = generar_grafico_radar(datos_para_pdf)
+    grafico_barras = generar_grafico_barras(datos_para_pdf)
+
+    # Renderizar HTML
+    html = render_template(
+        'resultado_pdf.html',
+        datos=datos_para_pdf,
+        grafico_radar=grafico_radar,
+        grafico_barras=grafico_barras
+    )
+
+    # Crear PDF
+    result = BytesIO()
+    pisa_status = pisa.CreatePDF(io.StringIO(html), dest=result)
+
+    if pisa_status.err:
+        return f"Error al generar PDF: {pisa_status.err}", 500
+
+    result.seek(0)
+    return send_file(
+        result,
+        mimetype='application/pdf',
+        download_name='reporte_evaluacion.pdf',
+        as_attachment=True
+    )
 
 
 # ──────────────────────────────
