@@ -8,7 +8,7 @@ from routes.datos import datos_bp
 from routes.formulario import formulario_bp
 from routes.prediccion import predicciones_bp
 from routes.analisis import analisis_bp
-from routes.routes import app_routes  # Blueprint que contiene /upload
+from routes.routes import app_routes 
 
 # ─────────────────────────────────────────────────────────────
 # Configuración de la aplicación Flask
@@ -42,7 +42,6 @@ app.register_blueprint(formulario_bp)
 app.register_blueprint(predicciones_bp)
 app.register_blueprint(app_routes)
 app.register_blueprint(analisis_bp)
-
 
 # ─────────────────────────────────────────────────────────────
 # Ruta principal

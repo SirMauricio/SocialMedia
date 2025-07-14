@@ -75,7 +75,7 @@
 
   <div class="mt-4 text-end">
     <a href="/" class="btn btn-outline-primary">Volver al inicio</a>
-    <a href="/descargar_pdf?path={{ pdf_path }}" class="btn btn-primary" target="_blank">Descargar PDF</a>
+    <a href="{{ url_for('formulario.generar_pdf') }}" class="btn btn-primary" target="_blank">Descargar PDF</a>
     <a href="{{ url_for('analisis.analisis_modelos') }}" class="btn btn-success">Ver Análisis Detallado con Modelos de IA</a>
   </div>
 </div>
